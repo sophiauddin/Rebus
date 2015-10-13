@@ -15,11 +15,17 @@
 setwd("/Users/hcnlab/Documents/Rebus/data analysis")
 
 #Step 3: read in the data
-data=read.csv("214to232_noclock.csv")
+data=read.csv("214to232_withoutclock.csv")
 
-#Step 4: set up the ANOVA
+#Step 4: set up linear model
+model1=lm(RT~condition+constraint+sense,data)
+
+#Step 5: run the ANOVA
+anova(model1)
+
+#Step 5b: run the ANOVA this way:
 aov.ex=aov(RT~(condition*constraint*sense),data)
 
-#Step 5: view the results of the ANOVA
+#Step 6: view the results of the second ANOVA
 summary(aov.ex)
 
